@@ -11,6 +11,7 @@ import (
 func main() {
 	fmt.Println("Hello, World!")
 	modules.SayBye()
-	u1 := uuid.Must(uuid.NewV4())
+	var err error
+	u1 := uuid.Must(uuid.NewV4(), err)
 	fmt.Printf("UUIDv4: %s\n", u1)
 }

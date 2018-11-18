@@ -1,0 +1,8 @@
+hash: 450d4cce664d8e157d796b280456c6e33dbcf1a6529a42bd413a990516ba6bef
+updated: 2018-11-19T01:58:50.856499847+09:00
+imports:
+- name: github.com/satori/go.uuid
+  version: f58768cc1a7a7e77a3bd49e98cdd21419399b6a3
+- name: github.com/sky0621/go-modules
+  version: 4f5e5a5187c79413550655c9620d539923c65615
+testImports: []

@@ -10,10 +10,6 @@ if [[ -z "${project}" ]]; then
 fi
 echo "${project}"
 
-gcloud run deploy go-subscriber-fs \
+kubectl run go-subscriber-fs \
   --image gcr.io/"${project}"/go-subscriber-fs:latest \
-  --platform managed \
-  --project "${project}" \
-  --region asia-northeast1 \
-  --allow-unauthenticated \
-  --set-env-vars PUB_PROJECT="${project}"
+  --env="PUB_PROJECT=${project}"

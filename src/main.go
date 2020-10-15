@@ -30,7 +30,11 @@ func main() {
 		}
 
 		for _, change := range operation.Changes {
-			d := change.Doc.Data()
+			ope, err := change.Doc.Ref.Get(ctx)
+			if err != nil {
+				log.Fatalln(err)
+			}
+			d := ope.Data()
 			order, ok := d["order"]
 			if ok {
 				ods := strings.Split(order.(string), ":")
@@ -38,24 +42,19 @@ func main() {
 					od := ods[0]
 					switch od {
 					case "add-school":
-						time.Sleep(10 * time.Second)
+						time.Sleep(5 * time.Second)
 					case "add-grade":
-						time.Sleep(8 * time.Second)
-					case "add-class":
-						time.Sleep(6 * time.Second)
-					case "add-teacher":
 						time.Sleep(4 * time.Second)
-					case "add-student":
+					case "add-class":
+						time.Sleep(3 * time.Second)
+					case "add-teacher":
 						time.Sleep(2 * time.Second)
+					case "add-student":
+						time.Sleep(1 * time.Second)
 					}
 				}
 			}
 			log.Printf("[operation-Data] %#+v", d)
-
-			_, err := change.Doc.Ref.Delete(ctx)
-			if err != nil {
-				log.Fatalln(err)
-			}
 		}
 	}
 }
